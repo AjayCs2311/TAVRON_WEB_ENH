@@ -571,6 +571,16 @@
   font-variant-numeric: tabular-nums; }
 .tv-prod a.tv-prod__stretch::after { content: ""; position: absolute; inset: 0; }
 .tv-prod { position: relative; }
+/* home cards list the Products menu's items; a cyan dot means it has a page */
+.tv .tv-prod__list { list-style: none; display: grid; align-content: start; gap: 7px; margin: 2px 0 20px; flex: 1; }
+.tv-prod__list li { position: relative; padding-left: 15px; font-size: .88rem; line-height: 1.4; color: var(--muted); }
+.tv-prod__list li::before {
+  content: ""; position: absolute; left: 0; top: .5em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--line-2);
+}
+.tv-prod__list li:has(a)::before { background: var(--accent); }
+.tv .tv-prod__list a { color: var(--ink-2); font-weight: 600; }
+.tv .tv-prod__list a:hover { color: var(--accent-700); }
 
 /* industry tiles — photo with the name on a bottom scrim. Not links yet:
    the industry pages don't exist. Photos are Unsplash License (free use). */
@@ -1152,41 +1162,3 @@
   .tv-doc__ask { padding: 26px 22px; }
 }
 
-/* --------------------------------------------------------------------------
-   18. Product catalogue — products.html
-   Every product in the client's sitemap, grouped by the menu's categories.
-   Products with a page get a card; the rest are enquiry chips until they do.
-   -------------------------------------------------------------------------- */
-.tv-catalog__top { padding: 118px 0 34px; background: var(--surface); }
-.tv-catalog__top h1 { margin-bottom: 12px; }
-.tv-catalog__top p { max-width: 60ch; margin: 0; }
-
-/* category bar sticks under the fixed header (68px tall, 76px below 992px) */
-.tv-catnav {
-  position: sticky; top: 68px; z-index: 5;
-  background: rgba(255,255,255,.94); backdrop-filter: blur(10px);
-  border-block: 1px solid var(--line);
-}
-.tv-catnav ul { display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; list-style: none; scrollbar-width: none; }
-.tv .tv-catnav a {
-  display: block; white-space: nowrap; padding: 7px 15px;
-  border: 1px solid var(--line-2); border-radius: var(--r-pill);
-  font-size: 13px; font-weight: 600; color: var(--ink-2);
-}
-.tv .tv-catnav a:hover { color: var(--accent-700); border-color: var(--accent); background: var(--accent-050); }
-
-.tv-catalog__group { padding: 44px 0 8px; scroll-margin-top: 140px; }
-.tv-catalog__group + .tv-catalog__group { border-top: 1px solid var(--line); margin-top: 36px; }
-.tv-catalog .tv-prod__foot { margin-top: auto; }
-
-.tv-catalog__more { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 20px; }
-.tv-catalog__more span {
-  font-size: 11.5px; font-weight: 650; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--muted); margin-right: 6px;
-}
-.tv .tv-catalog__more a:hover { background: #fff; border-color: var(--accent); color: var(--accent-700); }
-
-@media (max-width: 991px) {
-  .tv-catnav { top: 76px; }
-  .tv-catalog__top { padding-top: 104px; }
-}
