@@ -340,10 +340,11 @@
   display: flex; align-items: center;
   padding: 128px 0 78px;
   overflow: hidden;
-  background: #EAF6FC;
+  background: #fff;
   isolation: isolate;
 }
-.tv-hero__media { position: absolute; inset: 0; z-index: -2; }
+/* copy on white on the left, the photo uncovered on the right half */
+.tv-hero__media { position: absolute; inset: 0 0 0 50%; z-index: -2; }
 .tv-hero__slide {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
@@ -352,13 +353,6 @@
   transition: opacity 1.5s ease, transform 9s linear;
 }
 .tv-hero__slide.is-active { opacity: 1; transform: scale(1); }
-/* White over the copy, easing into a blue tint over the photo on the right. */
-.tv-hero__scrim {
-  position: absolute; inset: 0; z-index: -1;
-  background:
-    linear-gradient(100deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.9) 38%, rgba(232,246,253,.55) 62%, rgba(0,120,190,.12) 100%),
-    radial-gradient(900px 460px at 78% 12%, rgba(0,174,239,.14), transparent 62%);
-}
 .tv-hero__grid {
   position: absolute; inset: 0; z-index: -1; opacity: .16;
   background-image:
@@ -368,7 +362,7 @@
   mask-image: radial-gradient(1000px 600px at 20% 40%, #000 10%, transparent 78%);
   -webkit-mask-image: radial-gradient(1000px 600px at 20% 40%, #000 10%, transparent 78%);
 }
-.tv-hero__inner { position: relative; max-width: 760px; }
+.tv-hero__inner { position: relative; max-width: 600px; }
 .tv-hero .tv-eyebrow { color: #005270; }
 .tv-hero .tv-eyebrow::before { background: linear-gradient(90deg, #005270, rgba(0,82,112,0)); }
 .tv-hero h1 { color: var(--ink); margin-bottom: 20px; }
@@ -380,7 +374,6 @@
 .tv .tv-hero__sub {
   font-size: clamp(1rem, 1.45vw, 1.19rem);
   color: var(--ink-3);
-  text-shadow: 0 0 18px rgba(255,255,255,.9);
   max-width: 620px; margin-bottom: 26px;
 }
 .tv-hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
@@ -414,7 +407,7 @@
   overflow: hidden;
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow-sm);
-  max-width: 720px;
+  max-width: 600px;
 }
 .tv-hero__rail div { background: rgba(255,255,255,.78); padding: 18px 20px; }
 .tv-hero__rail strong {
@@ -428,80 +421,11 @@
   color: var(--muted);
 }
 .tv-hero__scrollcue {
-  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
+  position: absolute; left: 25%; bottom: 26px; transform: translateX(-50%);
   color: rgba(10,26,42,.4); font-size: 22px;
   animation: tv-bob 2.2s ease-in-out infinite;
 }
 @keyframes tv-bob { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
-
-/* --------------------------------------------------------------------------
-   Hero treatments — TEMP. Four alternatives to the white fade, switched with
-   ?hero=split|glass|blue|frame on index.html while the client chooses. Keep
-   the winner, delete the rest and the switch script in index.html.
-   -------------------------------------------------------------------------- */
-/* split — copy on white, photo uncovered on the right half */
-.tv-hero--split { background: #fff; }
-.tv-hero--split .tv-hero__media { left: 50%; clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%); }
-.tv-hero--split .tv-hero__scrim { background: none; }
-.tv-hero--split .tv-hero__inner, .tv-hero--split .tv-hero__rail { max-width: 600px; }
-.tv-hero--split .tv-hero__scrollcue { left: 25%; }
-
-/* glass — whole photo visible, copy on a frosted card */
-.tv-hero--glass .tv-hero__scrim { background: linear-gradient(180deg, rgba(0,40,70,.06), rgba(0,40,70,.22)); }
-.tv-hero--glass .tv-hero__grid { display: none; }
-.tv-hero--glass .tv-hero__inner {
-  max-width: 660px; padding: 38px 40px 40px;
-  background: rgba(255,255,255,.8);
-  -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgba(255,255,255,.7); border-radius: var(--r-lg);
-  box-shadow: 0 30px 70px rgba(0,30,60,.22);
-}
-.tv-hero--glass .tv-hero__rail { box-shadow: none; }
-.tv-hero--glass .tv-hero__scrollcue { color: rgba(255,255,255,.85); }
-
-/* blue — deep brand-blue fade on the left, photo clear on the right */
-.tv-hero--blue { background: #004E80; }
-.tv-hero--blue .tv-hero__scrim {
-  background: linear-gradient(100deg, rgba(0,52,90,.95) 0%, rgba(0,78,128,.86) 38%, rgba(0,95,150,.35) 64%, rgba(0,95,150,0) 84%);
-}
-.tv-hero--blue .tv-hero__grid { opacity: .08; filter: invert(1); }
-.tv-hero--blue .tv-eyebrow { color: #B8E6FF; }
-.tv-hero--blue .tv-eyebrow::before { background: linear-gradient(90deg, #4DCEFF, rgba(77,206,255,0)); }
-.tv-hero--blue h1 { color: #fff; }
-.tv-hero--blue h1 em {
-  background: linear-gradient(100deg, #80DCFF 0%, #4DCEFF 55%, #00AEEF 100%);
-  -webkit-background-clip: text; background-clip: text;
-}
-.tv .tv-hero--blue .tv-hero__sub { color: #E0F4FF; text-shadow: none; }
-.tv .tv-hero--blue .tv-btn--ghost { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.4); color: #fff; }
-.tv .tv-hero--blue .tv-btn--ghost:hover { background: rgba(255,255,255,.16); border-color: #fff; color: #fff; }
-.tv-hero--blue .tv-hero__rail { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.18); box-shadow: none; }
-.tv-hero--blue .tv-hero__rail div { background: rgba(0,40,70,.45); }
-.tv-hero--blue .tv-hero__rail strong { color: #fff; }
-.tv-hero--blue .tv-hero__rail span { color: #B8E6FF; }
-.tv-hero--blue .tv-hero__scrollcue { color: rgba(255,255,255,.6); }
-
-/* frame — white page, the photo as a rounded card on the right */
-.tv-hero--frame { background: linear-gradient(180deg, #fff 0%, #EAF6FC 100%); }
-.tv-hero--frame .tv-hero__media {
-  inset: 118px max(24px, calc((100vw - var(--container)) / 2 + 24px)) 64px 52%;
-  border-radius: var(--r-lg); overflow: hidden;
-  box-shadow: 0 30px 70px rgba(0,40,80,.22);
-}
-.tv-hero--frame .tv-hero__scrim { background: none; }
-.tv-hero--frame .tv-hero__inner, .tv-hero--frame .tv-hero__rail { max-width: 600px; }
-.tv-hero--frame .tv-hero__scrollcue { left: 25%; }
-
-@media (max-width: 991px) {
-  /* narrow screens: split and frame put the photo above the copy */
-  .tv-hero.tv-hero--split, .tv-hero.tv-hero--frame { padding-top: 360px; }
-  .tv-hero--split .tv-hero__media { inset: 76px 0 auto 0; height: 260px; clip-path: none; }
-  .tv-hero--frame .tv-hero__media { inset: 92px 16px auto 16px; height: 244px; }
-  .tv-hero--glass .tv-hero__inner { padding: 26px 22px; }
-  .tv-hero--blue .tv-hero__scrim {
-    background: linear-gradient(180deg, rgba(0,52,90,.9) 0%, rgba(0,78,128,.84) 60%, rgba(0,52,90,.92) 100%);
-  }
-}
 
 /* --------------------------------------------------------------------------
    7. Logo marquee
@@ -1054,13 +978,9 @@
   .tv #header { padding: 12px 0; background: rgba(7,21,35,.94); backdrop-filter: blur(12px); }
   .tv #header.tv-header--solid { background: rgba(255,255,255,.96); }
   .tv--light-top #header { background: #fff; }
-  .tv-hero { min-height: auto; padding: 118px 0 76px; }
-  /* narrow screens see more of the bright slide behind the copy */
-  .tv-hero__scrim {
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.86) 55%, rgba(255,255,255,.95) 100%),
-      radial-gradient(600px 380px at 80% 10%, rgba(0,174,239,.12), transparent 65%);
-  }
+  .tv-hero { min-height: auto; padding: 360px 0 76px; }
+  /* the photo moves above the copy */
+  .tv-hero__media { inset: 76px 0 auto 0; height: 260px; }
   .tv-split { grid-template-columns: 1fr; }
   .tv-split--flip > *:first-child { order: 0; }
   .tv-split__figure::before { display: none; }
