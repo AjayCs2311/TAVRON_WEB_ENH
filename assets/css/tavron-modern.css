@@ -8,22 +8,23 @@
    1. Design tokens
    -------------------------------------------------------------------------- */
 .tv {
-  /* Brand — deep steel navy + "think cool" cyan, drawn from the logo */
+  /* Brand — deep steel navy + Tavron cyan #00AEEF. The darker cyans are the
+     same hue, stepped down until they pass AA as text. */
   --ink:        #0a1a2a;
   --ink-2:      #12293e;
   --ink-3:      #1d3d59;
   --slate:      #3f5468;
   --muted:      #445972;
 
-  --accent:     #0aa2be;
-  --accent-600: #0a8aa3;
-  --accent-700: #077085;
-  --accent-050: #e8f7fa;
+  --accent:     #00AEEF;
+  --accent-600: #0086B8;
+  --accent-700: #006F99;
+  --accent-050: #E5F8FF;
   --amber:      #e9962f;
 
   --paper:      #ffffff;
-  --surface:    #f4f8fa;
-  --surface-2:  #eaf1f5;
+  --surface:    #EAF6FC;
+  --surface-2:  #DCF0FA;
   --line:       rgba(10, 26, 42, 0.10);
   --line-2:     rgba(10, 26, 42, 0.16);
 
@@ -90,11 +91,24 @@
 .tv-section { padding: clamp(54px, 6.4vw, 88px) 0; position: relative; }
 .tv-section--tight { padding: clamp(40px, 5vw, 68px) 0; }
 .tv-section--surface { background: var(--surface); }
+.tv-section--tint { background: var(--surface-2); }
+/* brand-blue band — the deep end of the #00AEEF family. White text is 5.4:1
+   at the light end of the gradient; the cyan glow sits away from the copy. */
+.tv-section--blue {
+  background:
+    radial-gradient(900px 420px at 92% -12%, rgba(0,174,239,.35), transparent 62%),
+    linear-gradient(158deg, #006FAE 0%, #005B94 55%, #004E80 100%);
+}
+.tv .tv-section--blue h2 { color: #fff; }
+.tv .tv-section--blue .tv-head p { color: #E0F4FF; }
+.tv-section--blue .tv-eyebrow { color: #fff; }
+.tv-section--blue .tv-eyebrow::before { background: linear-gradient(90deg, #4DCEFF, rgba(77,206,255,0)); }
+.tv-section--blue .tv-card { border-color: transparent; box-shadow: 0 10px 30px rgba(0,30,60,.18); }
 .tv-section--ink {
   position: relative; overflow: hidden;
   background:
-    radial-gradient(900px 420px at 92% -12%, rgba(10,162,190,.26), transparent 62%),
-    radial-gradient(700px 460px at 4% 106%, rgba(10,162,190,.13), transparent 60%),
+    radial-gradient(900px 420px at 92% -12%, rgba(0,174,239,.26), transparent 62%),
+    radial-gradient(700px 460px at 4% 106%, rgba(0,174,239,.13), transparent 60%),
     linear-gradient(158deg, #081727 0%, #12304a 52%, #081727 100%);
   color: #cfe0ec;
 }
@@ -115,8 +129,8 @@
 .tv-section--turnkey {
   position: relative; overflow: hidden;
   background:
-    radial-gradient(900px 460px at 92% -14%, rgba(10,162,190,.16), transparent 62%),
-    linear-gradient(168deg, #dfeaf3 0%, #d3e3ef 54%, #dbe8f2 100%);
+    radial-gradient(900px 460px at 92% -14%, rgba(0,174,239,.16), transparent 62%),
+    linear-gradient(168deg, #D6EEF9 0%, #C9E8F6 54%, #D3EEFA 100%);
 }
 /* the process train the section describes, as ground */
 .tv-section--turnkey::before {
@@ -128,19 +142,21 @@
 .tv-section--turnkey h2 { color: var(--ink); }
 .tv .tv-section--turnkey .tv-lead { color: var(--ink-3); }
 .tv .tv-section--turnkey .tv-lines { color: var(--slate); }
-/* accent-700 is only 4.37 on this ground and 3.81 where the train crosses it.
-   #055866 is the same deep teal the product page uses for its labels. */
-.tv-section--turnkey .tv-eyebrow { color: #055866; }
+/* accent-700 is only 4.3 on this ground, less where the train crosses it.
+   #005270 is the same deep cyan the product page uses for its labels. */
+.tv-section--turnkey .tv-eyebrow { color: #005270; }
 .tv-section--turnkey .tv-eyebrow::before {
-  background: linear-gradient(90deg, #055866, rgba(5,88,102,0));
+  background: linear-gradient(90deg, #005270, rgba(0,82,112,0));
 }
 /* the ghost pill's default border is rgba(10,26,42,.16), which nearly vanishes
    on this ground — give it a white fill and a firmer edge so the capsule reads */
-.tv .tv-section--turnkey .tv-btn--ghost {
-  background: rgba(255,255,255,.72); border-color: rgba(5,88,102,.28); color: #073c47;
+.tv .tv-section--turnkey .tv-btn--ghost,
+.tv .tv-hero .tv-btn--ghost {
+  background: rgba(255,255,255,.72); border-color: rgba(0,82,112,.28); color: #00384C;
 }
-.tv .tv-section--turnkey .tv-btn--ghost:hover {
-  background: #fff; border-color: var(--accent); color: #055866;
+.tv .tv-section--turnkey .tv-btn--ghost:hover,
+.tv .tv-hero .tv-btn--ghost:hover {
+  background: #fff; border-color: var(--accent); color: #005270;
 }
 
 .tv-section--ink h2, .tv-section--ink h3, .tv-section--ink h4 { color: #fff; }
@@ -159,10 +175,10 @@
 }
 .tv-eyebrow::before {
   content: ""; width: 26px; height: 2px; border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent), rgba(10,162,190,0));
+  background: linear-gradient(90deg, var(--accent), rgba(0,174,239,0));
 }
-.tv-section--ink .tv-eyebrow { color: #5fd6ec; }
-.tv-section--ink .tv-eyebrow::before { background: linear-gradient(90deg, #5fd6ec, rgba(95,214,236,0)); }
+.tv-section--ink .tv-eyebrow, .tv-cta .tv-eyebrow { color: #4DCEFF; }
+.tv-section--ink .tv-eyebrow::before, .tv-cta .tv-eyebrow::before { background: linear-gradient(90deg, #4DCEFF, rgba(77,206,255,0)); }
 
 .tv-h1 { font-size: clamp(2.15rem, 4.2vw, 2.95rem); }
 .tv-h2 { font-size: clamp(1.6rem, 2.8vw, 2.25rem); }
@@ -192,11 +208,12 @@
 .tv .tv-btn:hover { transform: translateY(-2px); text-decoration: none; }
 
 .tv .tv-btn--primary {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-700) 100%);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(10,162,190,.34);
+  /* white on #00AEEF is 2.5:1; navy ink on it is 7:1, so the brand fill keeps dark text */
+  background: var(--accent);
+  color: var(--ink);
+  box-shadow: 0 6px 18px rgba(0,174,239,.34);
 }
-.tv .tv-btn--primary:hover { color: #fff; box-shadow: 0 12px 28px rgba(10,162,190,.42); }
+.tv .tv-btn--primary:hover { color: var(--ink); background: #1CBBF7; box-shadow: 0 12px 28px rgba(0,174,239,.42); }
 
 .tv .tv-btn--ghost {
   background: transparent; color: var(--ink); border-color: var(--line-2);
@@ -247,13 +264,13 @@
 }
 .tv .nav-menu a:hover,
 .tv .nav-menu .active > a,
-.tv .nav-menu li:hover > a { color: #5fd6ec; }
+.tv .nav-menu li:hover > a { color: #4DCEFF; }
 
 /* underline indicator on top-level items — on the <li>, so the template's
    icofont dropdown caret (an ::after on the <a>) is left intact */
 .tv .nav-menu > ul > li::after {
   content: ""; position: absolute; left: 26px; right: 0; bottom: 4px;
-  height: 2px; border-radius: 2px; background: #5fd6ec;
+  height: 2px; border-radius: 2px; background: #4DCEFF;
   transform: scaleX(0); transform-origin: left center;
   transition: transform .25s var(--ease);
 }
@@ -262,7 +279,7 @@
 .tv .nav-menu .drop-down > a::after { padding-left: 6px; opacity: .6; font-size: .9em; }
 
 .tv .header-social-links a { color: rgba(255,255,255,.7); }
-.tv .header-social-links a:hover { color: #5fd6ec; }
+.tv .header-social-links a:hover { color: #4DCEFF; }
 
 /* dropdowns stay light for readability */
 .tv .nav-menu .drop-down ul {
@@ -274,7 +291,8 @@
 }
 .tv .nav-menu .drop-down li a { color: var(--ink-2); font-size: 12.5px; padding: 9px 20px; }
 .tv .nav-menu .drop-down li a:hover { color: var(--accent-700); background: var(--accent-050); }
-.tv .nav-menu .drop-down > ul > li > a::after { display: none; }
+/* nested flyouts keep the template's side arrow so they read as openable */
+.tv .nav-menu .drop-down .drop-down > a { padding-right: 38px; }
 
 /* scrolled / solid state */
 .tv #header.tv-header--solid {
@@ -309,7 +327,7 @@
 .tv.mobile-nav-active .mobile-nav-toggle i { color: #fff; }
 .tv .mobile-nav { background: rgba(7,21,35,.98); }
 .tv .mobile-nav a { color: rgba(233,243,249,.9); font-family: var(--f-body); }
-.tv .mobile-nav a:hover, .tv .mobile-nav .active > a, .tv .mobile-nav li:hover > a { color: #6fdcf0; }
+.tv .mobile-nav a:hover, .tv .mobile-nav .active > a, .tv .mobile-nav li:hover > a { color: #66D5FF; }
 .tv .mobile-nav-overly { background: rgba(6,16,26,.7); }
 
 /* --------------------------------------------------------------------------
@@ -322,7 +340,7 @@
   display: flex; align-items: center;
   padding: 128px 0 78px;
   overflow: hidden;
-  background: var(--ink);
+  background: #EAF6FC;
   isolation: isolate;
 }
 .tv-hero__media { position: absolute; inset: 0; z-index: -2; }
@@ -334,34 +352,35 @@
   transition: opacity 1.5s ease, transform 9s linear;
 }
 .tv-hero__slide.is-active { opacity: 1; transform: scale(1); }
+/* White over the copy, easing into a blue tint over the photo on the right. */
 .tv-hero__scrim {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(100deg, rgba(6,17,28,.96) 0%, rgba(6,17,28,.90) 44%, rgba(6,17,28,.58) 74%, rgba(6,17,28,.72) 100%),
-    radial-gradient(900px 460px at 78% 12%, rgba(10,162,190,.30), transparent 62%);
+    linear-gradient(100deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.9) 38%, rgba(232,246,253,.55) 62%, rgba(0,120,190,.12) 100%),
+    radial-gradient(900px 460px at 78% 12%, rgba(0,174,239,.14), transparent 62%);
 }
 .tv-hero__grid {
   position: absolute; inset: 0; z-index: -1; opacity: .16;
   background-image:
-    linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
+    linear-gradient(rgba(10,26,42,.30) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,26,42,.30) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(1000px 600px at 20% 40%, #000 10%, transparent 78%);
   -webkit-mask-image: radial-gradient(1000px 600px at 20% 40%, #000 10%, transparent 78%);
 }
 .tv-hero__inner { position: relative; max-width: 760px; }
-.tv-hero .tv-eyebrow { color: #6fdcf0; }
-.tv-hero .tv-eyebrow::before { background: linear-gradient(90deg, #6fdcf0, rgba(111,220,240,0)); }
-.tv-hero h1 { color: #fff; margin-bottom: 20px; }
+.tv-hero .tv-eyebrow { color: #005270; }
+.tv-hero .tv-eyebrow::before { background: linear-gradient(90deg, #005270, rgba(0,82,112,0)); }
+.tv-hero h1 { color: var(--ink); margin-bottom: 20px; }
 .tv-hero h1 em {
   font-style: normal;
-  background: linear-gradient(100deg, #8ee9f8 0%, #4fc0dd 55%, #2f9fc0 100%);
+  background: linear-gradient(100deg, #0086B8 0%, #006F99 50%, #005270 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .tv .tv-hero__sub {
   font-size: clamp(1rem, 1.45vw, 1.19rem);
-  color: rgba(232,244,252,.96);
-  text-shadow: 0 1px 8px rgba(6,17,28,.55);
+  color: var(--ink-3);
+  text-shadow: 0 0 18px rgba(255,255,255,.9);
   max-width: 620px; margin-bottom: 26px;
 }
 .tv-hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
@@ -377,9 +396,9 @@
   font-size: 12.5px; font-weight: 600; letter-spacing: .01em;
   backdrop-filter: blur(8px);
 }
-.tv-chip i { color: #6fdcf0; font-size: 1.05em; }
+.tv-chip i { color: #66D5FF; font-size: 1.05em; }
 .tv-chip--light {
-  background: var(--accent-050); border-color: rgba(10,162,190,.22); color: var(--accent-700);
+  background: var(--accent-050); border-color: rgba(0,174,239,.22); color: var(--accent-700);
 }
 .tv-chip--light i { color: var(--accent-600); }
 
@@ -389,30 +408,100 @@
   margin-top: 8px;
   display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
   gap: 1px;
-  background: rgba(255,255,255,.14);
-  border: 1px solid rgba(255,255,255,.14);
+  background: var(--line);
+  border: 1px solid var(--line);
   border-radius: var(--r-md);
   overflow: hidden;
   backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
   max-width: 720px;
 }
-.tv-hero__rail div { background: rgba(8,20,32,.55); padding: 18px 20px; }
+.tv-hero__rail div { background: rgba(255,255,255,.78); padding: 18px 20px; }
 .tv-hero__rail strong {
   display: block;
   font-family: var(--f-display); font-size: clamp(1.35rem, 2.3vw, 1.85rem);
-  font-weight: 700; color: #fff; line-height: 1.1; letter-spacing: -.015em;
+  font-weight: 700; color: var(--ink); line-height: 1.1; letter-spacing: -.015em;
   font-variant-numeric: tabular-nums;
 }
 .tv-hero__rail span {
   font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-  color: rgba(184,210,228,.8);
+  color: var(--muted);
 }
 .tv-hero__scrollcue {
   position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
-  color: rgba(255,255,255,.5); font-size: 22px;
+  color: rgba(10,26,42,.4); font-size: 22px;
   animation: tv-bob 2.2s ease-in-out infinite;
 }
 @keyframes tv-bob { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+
+/* --------------------------------------------------------------------------
+   Hero treatments — TEMP. Four alternatives to the white fade, switched with
+   ?hero=split|glass|blue|frame on index.html while the client chooses. Keep
+   the winner, delete the rest and the switch script in index.html.
+   -------------------------------------------------------------------------- */
+/* split — copy on white, photo uncovered on the right half */
+.tv-hero--split { background: #fff; }
+.tv-hero--split .tv-hero__media { left: 50%; clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%); }
+.tv-hero--split .tv-hero__scrim { background: none; }
+.tv-hero--split .tv-hero__inner, .tv-hero--split .tv-hero__rail { max-width: 600px; }
+.tv-hero--split .tv-hero__scrollcue { left: 25%; }
+
+/* glass — whole photo visible, copy on a frosted card */
+.tv-hero--glass .tv-hero__scrim { background: linear-gradient(180deg, rgba(0,40,70,.06), rgba(0,40,70,.22)); }
+.tv-hero--glass .tv-hero__grid { display: none; }
+.tv-hero--glass .tv-hero__inner {
+  max-width: 660px; padding: 38px 40px 40px;
+  background: rgba(255,255,255,.8);
+  -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255,255,255,.7); border-radius: var(--r-lg);
+  box-shadow: 0 30px 70px rgba(0,30,60,.22);
+}
+.tv-hero--glass .tv-hero__rail { box-shadow: none; }
+.tv-hero--glass .tv-hero__scrollcue { color: rgba(255,255,255,.85); }
+
+/* blue — deep brand-blue fade on the left, photo clear on the right */
+.tv-hero--blue { background: #004E80; }
+.tv-hero--blue .tv-hero__scrim {
+  background: linear-gradient(100deg, rgba(0,52,90,.95) 0%, rgba(0,78,128,.86) 38%, rgba(0,95,150,.35) 64%, rgba(0,95,150,0) 84%);
+}
+.tv-hero--blue .tv-hero__grid { opacity: .08; filter: invert(1); }
+.tv-hero--blue .tv-eyebrow { color: #B8E6FF; }
+.tv-hero--blue .tv-eyebrow::before { background: linear-gradient(90deg, #4DCEFF, rgba(77,206,255,0)); }
+.tv-hero--blue h1 { color: #fff; }
+.tv-hero--blue h1 em {
+  background: linear-gradient(100deg, #80DCFF 0%, #4DCEFF 55%, #00AEEF 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+.tv .tv-hero--blue .tv-hero__sub { color: #E0F4FF; text-shadow: none; }
+.tv .tv-hero--blue .tv-btn--ghost { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.4); color: #fff; }
+.tv .tv-hero--blue .tv-btn--ghost:hover { background: rgba(255,255,255,.16); border-color: #fff; color: #fff; }
+.tv-hero--blue .tv-hero__rail { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.18); box-shadow: none; }
+.tv-hero--blue .tv-hero__rail div { background: rgba(0,40,70,.45); }
+.tv-hero--blue .tv-hero__rail strong { color: #fff; }
+.tv-hero--blue .tv-hero__rail span { color: #B8E6FF; }
+.tv-hero--blue .tv-hero__scrollcue { color: rgba(255,255,255,.6); }
+
+/* frame — white page, the photo as a rounded card on the right */
+.tv-hero--frame { background: linear-gradient(180deg, #fff 0%, #EAF6FC 100%); }
+.tv-hero--frame .tv-hero__media {
+  inset: 118px max(24px, calc((100vw - var(--container)) / 2 + 24px)) 64px 52%;
+  border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0,40,80,.22);
+}
+.tv-hero--frame .tv-hero__scrim { background: none; }
+.tv-hero--frame .tv-hero__inner, .tv-hero--frame .tv-hero__rail { max-width: 600px; }
+.tv-hero--frame .tv-hero__scrollcue { left: 25%; }
+
+@media (max-width: 991px) {
+  /* narrow screens: split and frame put the photo above the copy */
+  .tv-hero.tv-hero--split, .tv-hero.tv-hero--frame { padding-top: 360px; }
+  .tv-hero--split .tv-hero__media { inset: 76px 0 auto 0; height: 260px; clip-path: none; }
+  .tv-hero--frame .tv-hero__media { inset: 92px 16px auto 16px; height: 244px; }
+  .tv-hero--glass .tv-hero__inner { padding: 26px 22px; }
+  .tv-hero--blue .tv-hero__scrim {
+    background: linear-gradient(180deg, rgba(0,52,90,.9) 0%, rgba(0,78,128,.84) 60%, rgba(0,52,90,.92) 100%);
+  }
+}
 
 /* --------------------------------------------------------------------------
    7. Logo marquee
@@ -459,7 +548,7 @@
 .tv-split__figure::before {
   content: ""; position: absolute; inset: auto -18px -18px auto;
   width: 62%; height: 62%; border-radius: var(--r-lg);
-  background: linear-gradient(135deg, rgba(10,162,190,.16), rgba(233,150,47,.12));
+  background: linear-gradient(135deg, rgba(0,174,239,.16), rgba(233,150,47,.12));
   z-index: -1;
 }
 
@@ -473,7 +562,7 @@
   background: var(--accent-050); color: var(--accent-600); font-size: 12px;
 }
 .tv-section--ink .tv-check li { color: rgba(214,230,241,.85); }
-.tv-section--ink .tv-check i { background: rgba(95,214,236,.14); color: #6fdcf0; }
+.tv-section--ink .tv-check i { background: rgba(77,206,255,.14); color: #66D5FF; }
 
 /* --------------------------------------------------------------------------
    9. Cards
@@ -491,7 +580,7 @@
   transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
   height: 100%;
 }
-.tv-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(10,162,190,.28); }
+.tv-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(0,174,239,.28); }
 .tv-card h3 { font-size: 1.12rem; margin-bottom: 10px; }
 
 /* five-up stage cards: narrower than the kit's default, so pull the padding
@@ -502,26 +591,26 @@
 .tv-stages .tv-card__icon { width: 42px; height: 42px; border-radius: 11px; font-size: 20px; margin-bottom: 15px; }
 .tv-stages .tv-card__num { font-size: 11px; letter-spacing: .16em; margin-bottom: 12px; }
 .tv-card p { font-size: .95rem; margin-bottom: 0; }
-/* accent-600 on white is 4.06:1 — under AA at this size. accent-700 is 5.73. */
+/* accent-600 on white is 4.12:1 — under AA at this size. accent-700 is 5.62. */
 .tv-card__num {
   font-family: var(--f-display); font-size: 12px; font-weight: 700;
   letter-spacing: .14em; color: var(--accent-700); display: block; margin-bottom: 14px;
 }
-.tv-section--ink .tv-card__num { color: #6fdcf0; }
+.tv-section--ink .tv-card__num { color: #66D5FF; }
 .tv-card__icon {
   width: 50px; height: 50px; border-radius: 13px;
   display: inline-flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg, var(--accent-050), #fff);
-  border: 1px solid rgba(10,162,190,.2);
+  border: 1px solid rgba(0,174,239,.2);
   color: var(--accent-600); font-size: 24px;
   margin-bottom: 18px;
 }
 .tv-section--ink .tv-card {
   background: rgba(255,255,255,.045); border-color: rgba(255,255,255,.12); box-shadow: none;
 }
-.tv-section--ink .tv-card:hover { background: rgba(255,255,255,.075); border-color: rgba(95,214,236,.35); }
+.tv-section--ink .tv-card:hover { background: rgba(255,255,255,.075); border-color: rgba(77,206,255,.35); }
 .tv-section--ink .tv-card__icon {
-  background: rgba(95,214,236,.1); border-color: rgba(95,214,236,.24); color: #6fdcf0;
+  background: rgba(77,206,255,.1); border-color: rgba(77,206,255,.24); color: #66D5FF;
 }
 
 /* product card */
@@ -532,7 +621,7 @@
   box-shadow: var(--shadow-sm);
   transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
 }
-.tv-prod:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: rgba(10,162,190,.3); }
+.tv-prod:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: rgba(0,174,239,.3); }
 .tv-prod__media {
   position: relative; aspect-ratio: 16/10; overflow: hidden;
   background: linear-gradient(150deg, var(--surface-2), var(--surface));
@@ -548,7 +637,7 @@
   color: var(--accent-700); font-size: 10.5px; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase;
   padding: 5px 11px; border-radius: var(--r-pill);
-  border: 1px solid rgba(10,162,190,.2);
+  border: 1px solid rgba(0,174,239,.2);
 }
 .tv-prod__body { padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1; }
 .tv-prod__body h3 { font-size: 1.05rem; margin-bottom: 9px; letter-spacing: -.011em; }
@@ -558,6 +647,23 @@
   font-variant-numeric: tabular-nums; }
 .tv-prod a.tv-prod__stretch::after { content: ""; position: absolute; inset: 0; }
 .tv-prod { position: relative; }
+
+/* industry tiles — photo with the name on a bottom scrim. Not links yet:
+   the industry pages don't exist. Photos are Unsplash License (free use). */
+.tv-ind {
+  position: relative; margin: 0; aspect-ratio: 4/3; overflow: hidden;
+  border-radius: var(--r-md); box-shadow: var(--shadow-sm);
+}
+.tv-ind img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tv-ind figcaption {
+  position: absolute; inset: auto 0 0; padding: 48px 22px 18px;
+  background: linear-gradient(180deg, rgba(10,26,42,0), rgba(10,26,42,.78));
+  color: #fff; font-family: var(--f-display); font-weight: 650; font-size: 1.12rem;
+}
+@media (max-width: 700px) {
+  .tv-grid--3.tv-inds { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+  .tv-ind figcaption { padding: 32px 14px 12px; font-size: .95rem; }
+}
 
 /* --------------------------------------------------------------------------
    Turnkey section support
@@ -572,8 +678,8 @@
   display: flex; gap: 24px; flex-wrap: wrap; align-items: center;
   margin-top: clamp(28px, 3.4vw, 38px);
 }
-.tv .tv-link--on-dark { color: #6fdcf0; }
-.tv .tv-link--on-dark:hover { color: #a5ecf9; }
+.tv .tv-link--on-dark { color: #66D5FF; }
+.tv .tv-link--on-dark:hover { color: #A6E8FF; }
 
 /* --------------------------------------------------------------------------
    11. CTA band
@@ -583,7 +689,7 @@
   border-radius: var(--r-lg);
   padding: clamp(38px, 5.5vw, 66px) clamp(26px, 5vw, 62px);
   background:
-    radial-gradient(700px 340px at 85% 10%, rgba(10,162,190,.35), transparent 62%),
+    radial-gradient(700px 340px at 85% 10%, rgba(0,174,239,.35), transparent 62%),
     linear-gradient(140deg, #0a1a2a, #16374f);
   color: #fff;
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px;
@@ -626,7 +732,7 @@
 }
 .tv-viewer__thumbs button img { width: 100%; height: 100%; object-fit: contain; }
 .tv-viewer__thumbs button:hover { opacity: 1; transform: translateY(-2px); }
-.tv-viewer__thumbs button[aria-selected="true"] { border-color: #6fdcf0; opacity: 1; }
+.tv-viewer__thumbs button[aria-selected="true"] { border-color: #66D5FF; opacity: 1; }
 
 /* spec strip below hero */
 .tv-specstrip {
@@ -664,7 +770,7 @@
 }
 .tv-table tbody td { color: var(--ink-2); }
 .tv-table tbody tr + tr th, .tv-table tbody tr + tr td { border-top: 1px solid var(--line); }
-.tv-table tbody tr:hover th, .tv-table tbody tr:hover td { background: rgba(10,162,190,.07); }
+.tv-table tbody tr:hover th, .tv-table tbody tr:hover td { background: rgba(0,174,239,.07); }
 /* numeric tables: figures right-aligned on shared-width digits so the columns lock up */
 .tv-table--num tbody td,
 .tv-table--num thead th:not(:first-child) { text-align: right; }
@@ -692,7 +798,7 @@
   display: inline-flex; align-self: flex-start; margin-bottom: 16px;
   font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
   color: var(--accent-700); background: var(--accent-050);
-  border: 1px solid rgba(10,162,190,.2); border-radius: var(--r-pill); padding: 5px 13px;
+  border: 1px solid rgba(0,174,239,.2); border-radius: var(--r-pill); padding: 5px 13px;
 }
 
 /* figure with caption (dimension drawings) */
@@ -791,7 +897,7 @@
   background: var(--accent); margin-top: 10px;
 }
 .tv #footer p { color: rgba(200,220,234,.7); font-size: .94rem; line-height: 1.8; }
-.tv #footer a { color: #6fdcf0; }
+.tv #footer a { color: #66D5FF; }
 .tv #footer a[href^="tel:"], .tv #footer a[href^="tel:"]:hover { color: inherit; }
 .tv #footer .copyright, .tv #footer .credits { color: rgba(200,220,234,.55); font-size: .86rem; }
 /* footer tracks the widest page container so it does not sit narrower than the content above */
@@ -834,7 +940,7 @@
 }
 .tv #footer > .container { border-top: 1px solid rgba(255,255,255,.08); }
 .tv #footer .social-links a { color: rgba(200,220,234,.6); }
-.tv #footer .social-links a:hover { color: #6fdcf0; }
+.tv #footer .social-links a:hover { color: #66D5FF; }
 
 /* --------------------------------------------------------------------------
    14. Scroll reveal
@@ -952,8 +1058,8 @@
   /* narrow screens see more of the bright slide behind the copy */
   .tv-hero__scrim {
     background:
-      linear-gradient(180deg, rgba(6,17,28,.92) 0%, rgba(6,17,28,.86) 55%, rgba(6,17,28,.94) 100%),
-      radial-gradient(600px 380px at 80% 10%, rgba(10,162,190,.28), transparent 65%);
+      linear-gradient(180deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.86) 55%, rgba(255,255,255,.95) 100%),
+      radial-gradient(600px 380px at 80% 10%, rgba(0,174,239,.12), transparent 65%);
   }
   .tv-split { grid-template-columns: 1fr; }
   .tv-split--flip > *:first-child { order: 0; }
@@ -985,16 +1091,16 @@
    hairline treatment of the content itself is unchanged. */
 .tv-doc {
   /* tuned against WCAG, not by eye: every colour that sits directly on
-     --doc-ground clears AA. --doc-label is 6.2:1 on the ground, 8.1:1 on white. */
+     --doc-ground clears AA. --doc-label is 6.6:1 on the ground, 8.6:1 on white. */
   --doc-ground: #d6e4ee;
-  --doc-label:  #055866;
+  --doc-label:  #005270;
   /* white sheets on a tinted ground: soft edge, no hairline. A 1px border against
      this much contrast is what read as sharp, so the shadow does the separating. */
   --doc-sheet:  0 1px 2px rgba(10,26,42,.05), 0 6px 18px rgba(10,26,42,.07);
 
   padding: 118px 0 84px;
   background:
-    linear-gradient(180deg, #c6e4ec 0, rgba(198,228,236,0) 620px),
+    linear-gradient(180deg, #CCF0FF 0, rgba(204,240,255,0) 620px),
     url("../img/bg/pid-dx-loop.svg") right -170px top 96px / 1240px auto no-repeat,
     var(--doc-ground);
 }
@@ -1037,7 +1143,7 @@
   border-radius: 9px; background: var(--paper); border: 2px solid transparent;
   box-shadow: var(--doc-sheet); opacity: 1; width: 66px; height: 52px;
 }
-.tv-doc .tv-viewer__thumbs button:hover { transform: none; border-color: rgba(10,162,190,.35); }
+.tv-doc .tv-viewer__thumbs button:hover { transform: none; border-color: rgba(0,174,239,.35); }
 .tv-doc .tv-viewer__thumbs button[aria-selected="true"] { border-color: var(--accent-600); }
 
 /* specification pairs — hairline rows, no card */
@@ -1119,9 +1225,48 @@
   .tv-doc__dl { padding: 2px 18px; }
   .tv-doc {
     background:
-      linear-gradient(180deg, #c6e4ec 0, rgba(198,228,236,0) 420px),
+      linear-gradient(180deg, #CCF0FF 0, rgba(204,240,255,0) 420px),
       url("../img/bg/pid-dx-loop.svg") right -190px top 88px / 780px auto no-repeat,
       var(--doc-ground);
   }
   .tv-doc__ask { padding: 26px 22px; }
+}
+
+/* --------------------------------------------------------------------------
+   18. Product catalogue — products.html
+   Every product in the client's sitemap, grouped by the menu's categories.
+   Products with a page get a card; the rest are enquiry chips until they do.
+   -------------------------------------------------------------------------- */
+.tv-catalog__top { padding: 118px 0 34px; background: var(--surface); }
+.tv-catalog__top h1 { margin-bottom: 12px; }
+.tv-catalog__top p { max-width: 60ch; margin: 0; }
+
+/* category bar sticks under the fixed header (68px tall, 76px below 992px) */
+.tv-catnav {
+  position: sticky; top: 68px; z-index: 5;
+  background: rgba(255,255,255,.94); backdrop-filter: blur(10px);
+  border-block: 1px solid var(--line);
+}
+.tv-catnav ul { display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; list-style: none; scrollbar-width: none; }
+.tv .tv-catnav a {
+  display: block; white-space: nowrap; padding: 7px 15px;
+  border: 1px solid var(--line-2); border-radius: var(--r-pill);
+  font-size: 13px; font-weight: 600; color: var(--ink-2);
+}
+.tv .tv-catnav a:hover { color: var(--accent-700); border-color: var(--accent); background: var(--accent-050); }
+
+.tv-catalog__group { padding: 44px 0 8px; scroll-margin-top: 140px; }
+.tv-catalog__group + .tv-catalog__group { border-top: 1px solid var(--line); margin-top: 36px; }
+.tv-catalog .tv-prod__foot { margin-top: auto; }
+
+.tv-catalog__more { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 20px; }
+.tv-catalog__more span {
+  font-size: 11.5px; font-weight: 650; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); margin-right: 6px;
+}
+.tv .tv-catalog__more a:hover { background: #fff; border-color: var(--accent); color: var(--accent-700); }
+
+@media (max-width: 991px) {
+  .tv-catnav { top: 76px; }
+  .tv-catalog__top { padding-top: 104px; }
 }

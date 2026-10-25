@@ -37,6 +37,7 @@ Pages currently on the modern layer:
 
 - `index.html`
 - `bulkCoolers.html`
+- `products.html`
 
 To migrate another page, add three things:
 

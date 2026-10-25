@@ -131,6 +131,11 @@
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
+            <script>
+              // products.html "Also ask us about" chips arrive as ?product=Name
+              var product = new URLSearchParams(location.search).get('product');
+              if (product) document.getElementById('subject').value = 'Enquiry: ' + product;
+            </script>
           </div>
 
         </div>

@@ -54,10 +54,9 @@
   <!-- ======= Hero ======= -->
   <section class="tv-hero">
     <div class="tv-hero__media" aria-hidden="true">
-      <div class="tv-hero__slide is-active" style="background-image:url('assets/img/slides/slide1x1366.jpg')"></div>
-      <div class="tv-hero__slide" style="background-image:url('assets/img/slides/slide3x1366.jpg')"></div>
-      <div class="tv-hero__slide" style="background-image:url('assets/img/slides/slide4x1366.jpg')"></div>
-      <div class="tv-hero__slide" style="background-image:url('assets/img/slides/slide6x1366.jpg')"></div>
+      <div class="tv-hero__slide is-active" style="background-image:url('assets/img/hero/hero-aisle.jpg')"></div>
+      <div class="tv-hero__slide" style="background-image:url('assets/img/hero/hero-tank.jpg')"></div>
+      <div class="tv-hero__slide" style="background-image:url('assets/img/hero/hero-vessels.jpg')"></div>
     </div>
     <div class="tv-hero__scrim" aria-hidden="true"></div>
     <div class="tv-hero__grid" aria-hidden="true"></div>
@@ -75,20 +74,27 @@
 
         <div class="tv-hero__cta">
           <a href="#products" class="tv-btn tv-btn--primary">Explore our products <i class="ri-arrow-right-line"></i></a>
-          <a href="contact.html" class="tv-btn tv-btn--on-dark">Talk to an engineer</a>
+          <a href="contact.html" class="tv-btn tv-btn--ghost">Talk to an engineer</a>
         </div>
 
         <div class="tv-hero__rail">
           <div><strong>2004</strong><span>Established</span></div>
           <div><strong>20,000</strong><span>Sq.ft factory</span></div>
           <div><strong>70+</strong><span>Client brands</span></div>
-          <div><strong>11</strong><span>Product lines</span></div>
+          <div><strong>8</strong><span>Product lines</span></div>
         </div>
       </div>
     </div>
 
     <a href="#how-we-work" class="tv-hero__scrollcue" aria-label="Scroll down"><i class="ri-arrow-down-line"></i></a>
   </section><!-- End Hero -->
+  <!-- TEMP: hero treatment preview, ?hero=split|glass|blue|frame. Remove once one is chosen. -->
+  <script>
+    (function () {
+      var v = new URLSearchParams(location.search).get('hero');
+      if (/^(split|glass|blue|frame)$/.test(v)) document.querySelector('.tv-hero').classList.add('tv-hero--' + v);
+    })();
+  </script>
 
   <main>
 
@@ -113,8 +119,46 @@
       </div>
     </section>
 
+    <!-- ======= Industries ======= -->
+    <section class="tv-section" id="industries">
+      <div class="tv-wrap">
+        <div class="tv-head tv-head--center tv-reveal">
+          <span class="tv-eyebrow">Industries</span>
+          <h2 class="tv-h2">Industries we serve</h2>
+          <p>Process equipment and complete plants for six industries.</p>
+        </div>
+
+        <div class="tv-grid tv-grid--3 tv-inds">
+          <figure class="tv-ind tv-reveal">
+            <img src="assets/img/industries/dairy.jpg" alt="Milk pouring into a glass jar" loading="lazy">
+            <figcaption>Dairy</figcaption>
+          </figure>
+          <figure class="tv-ind tv-reveal" data-d="1">
+            <img src="assets/img/industries/food-beverages.jpg" alt="Juice bottles with sliced citrus" loading="lazy">
+            <figcaption>Food &amp; Beverages</figcaption>
+          </figure>
+          <figure class="tv-ind tv-reveal" data-d="2">
+            <img src="assets/img/industries/chemicals.jpg" alt="Coloured liquids being poured between laboratory flasks" loading="lazy">
+            <figcaption>Chemicals</figcaption>
+          </figure>
+          <figure class="tv-ind tv-reveal">
+            <img src="assets/img/industries/nutraceuticals.jpg" alt="Softgel supplement capsules" loading="lazy">
+            <figcaption>Nutraceuticals</figcaption>
+          </figure>
+          <figure class="tv-ind tv-reveal" data-d="1">
+            <img src="assets/img/industries/pharma.jpg" alt="White pharmaceutical tablets" loading="lazy">
+            <figcaption>Pharma</figcaption>
+          </figure>
+          <figure class="tv-ind tv-reveal" data-d="2">
+            <img src="assets/img/industries/cosmetics.jpg" alt="Cosmetic cream jar and serum bottle" loading="lazy">
+            <figcaption>Cosmetics</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <!-- ======= Capabilities ======= -->
-    <section class="tv-section tv-section--surface" id="how-we-work">
+    <section class="tv-section tv-section--blue" id="how-we-work">
       <div class="tv-wrap">
         <div class="tv-head tv-head--center tv-reveal">
           <span class="tv-eyebrow">How we work</span>
@@ -159,12 +203,12 @@
     </section>
 
     <!-- ======= Products ======= -->
-    <section class="tv-section" id="products">
+    <section class="tv-section tv-section--surface" id="products">
       <div class="tv-wrap">
         <div class="tv-head tv-reveal">
           <span class="tv-eyebrow">Products</span>
           <h2 class="tv-h2">Equipment built for continuous production</h2>
-          <p>Eleven product lines, each engineered to hygienic-design standards and available in configurations
+          <p>Eight product categories, each engineered to hygienic-design standards and available in configurations
             matched to your capacity.</p>
         </div>
 
@@ -172,120 +216,112 @@
 
           <article class="tv-prod tv-reveal">
             <div class="tv-prod__media">
-              <span class="tv-prod__tag">Refrigeration</span>
-              <img src="assets/img/coolers/dx-horizontal-open.jpg" alt="Tavron direct expansion bulk milk cooler" loading="lazy">
+              <img src="assets/img/home-phe.jpg" alt="Plate heat exchanger" loading="lazy">
             </div>
             <div class="tv-prod__body">
-              <h3>Bulk Milk Coolers</h3>
-              <p>Direct-expansion, laser-welded dimple-jacketed tanks that hold milk at 3–4&nbsp;°C. Conforms to ISO 5708 2AA&nbsp;II.</p>
+              <h3>Heat Transfer</h3>
+              <p>Plate, tubular and shell &amp; tube heat exchangers.</p>
               <div class="tv-prod__foot">
-                <span class="tv-prod__spec">300 L – 10,000 L</span>
-                <a href="bulkCoolers.html" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
+                <span class="tv-prod__spec">3 products</span>
+                <a href="products.html#heat-transfer" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
               </div>
             </div>
           </article>
 
           <article class="tv-prod tv-reveal" data-d="1">
             <div class="tv-prod__media">
-              <span class="tv-prod__tag">Heat transfer</span>
-              <img src="assets/img/home-phe.jpg" alt="Plate heat exchanger" loading="lazy">
+              <img src="assets/img/coolers/dx-horizontal-open.jpg" alt="Tavron bulk milk cooler" loading="lazy">
             </div>
             <div class="tv-prod__body">
-              <h3>Plate Heat Exchangers</h3>
-              <p>Indirect-contact plate and shell-and-tube exchangers designed for both heating and cooling duties.</p>
+              <h3>Dairy Equipment</h3>
+              <p>HTST pasteurizers, milk reception, silos &amp; storage tanks, bulk milk coolers and SS centrifugal pumps.</p>
               <div class="tv-prod__foot">
-                <span class="tv-prod__spec">Custom duty</span>
-                <a href="plateheat.html" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
+                <span class="tv-prod__spec">5 products</span>
+                <a href="products.html#dairy-equipment" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
               </div>
             </div>
           </article>
 
           <article class="tv-prod tv-reveal" data-d="2">
             <div class="tv-prod__media">
-              <span class="tv-prod__tag">Fluid handling</span>
-              <img src="assets/img/home-tp.jpg" alt="Tavron SS centrifugal pumps" loading="lazy">
+              <img src="assets/img/dimpleJacket/dimple-jacket.jpg" alt="Dimple jacket tank" loading="lazy">
             </div>
             <div class="tv-prod__body">
-              <h3>SS Centrifugal Pumps</h3>
-              <p>Tavron-built centrifugal pumps in SS304/SS316 with hygienic impeller and seal options.</p>
+              <h3>Process Equipments</h3>
+              <p>Process, dimple jacket and mixing tanks, blenders, butter melting vats, churners and ghee vat kettles.</p>
               <div class="tv-prod__foot">
-                <span class="tv-prod__spec">SS304 / SS316</span>
-                <a href="pumps.html" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
+                <span class="tv-prod__spec">7 products</span>
+                <a href="products.html#process-equipments" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
               </div>
             </div>
           </article>
 
           <article class="tv-prod tv-reveal" data-d="3">
             <div class="tv-prod__media">
-              <span class="tv-prod__tag">Drying</span>
-              <img src="assets/img/spray/spray-dryer.jpg" alt="Spray dryer" loading="lazy">
+              <img src="assets/img/evp/forced-circulation-evaporator.jpg" alt="Evaporator plant" loading="lazy">
             </div>
             <div class="tv-prod__body">
-              <h3>Spray Dryers</h3>
-              <p>Consistent particle size and moisture content for milk, food and pharmaceutical powders.</p>
+              <h3>Separation &amp; Concentration</h3>
+              <p>Falling film, multi-effect and forced circulation evaporators, and membrane systems.</p>
               <div class="tv-prod__foot">
-                <span class="tv-prod__spec">Lab to plant scale</span>
-                <a href="spray.html" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
+                <span class="tv-prod__spec">4 products</span>
+                <a href="products.html#separation-concentration" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
               </div>
             </div>
           </article>
 
           <article class="tv-prod tv-reveal">
             <div class="tv-prod__media">
-              <span class="tv-prod__tag">Concentration</span>
-              <img src="assets/img/evp/MULTIPLE-EFFECT-EVAPORATORS.jpg" alt="Multiple effect evaporator" loading="lazy">
+              <img src="assets/img/spray/spray-dryer.jpg" alt="Spray dryer" loading="lazy">
             </div>
             <div class="tv-prod__body">
-              <h3>Evaporators</h3>
-              <p>Falling-film, forced-circulation and multiple-effect evaporators with TVR/MVR options.</p>
+              <h3>Drying</h3>
+              <p>Spray dryers, fluid bed and vibro fluid bed dryers, and powder handling.</p>
               <div class="tv-prod__foot">
-                <span class="tv-prod__spec">Multi-effect</span>
-                <a href="evaporators.html" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
+                <span class="tv-prod__spec">4 products</span>
+                <a href="products.html#drying" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
               </div>
             </div>
           </article>
 
           <article class="tv-prod tv-reveal" data-d="1">
             <div class="tv-prod__media">
-              <span class="tv-prod__tag">Thermal</span>
-              <img src="assets/img/pasteurisers/pasteuriser_phe.jpg" alt="HTST pasteuriser" loading="lazy">
+              <img src="assets/img/pumps/pumps1b.jpg" alt="Tavron SS centrifugal pumps" loading="lazy">
             </div>
             <div class="tv-prod__body">
-              <h3>HTST Pasteurisers</h3>
-              <p>Skid-mounted HTST systems with regeneration, holding tube and automated flow diversion.</p>
+              <h3>Hygienic Flow Equipments</h3>
+              <p>SS centrifugal pumps, valve clusters and piping solutions.</p>
               <div class="tv-prod__foot">
-                <span class="tv-prod__spec">Skid mounted</span>
-                <a href="pasteurisers.html" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
+                <span class="tv-prod__spec">3 products</span>
+                <a href="products.html#hygienic-flow" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
               </div>
             </div>
           </article>
 
           <article class="tv-prod tv-reveal" data-d="2">
             <div class="tv-prod__media">
-              <span class="tv-prod__tag">Storage</span>
-              <img src="assets/img/tank/MilkSilos.jpg" alt="Milk silos and storage tanks" loading="lazy">
+              <img src="assets/img/projects/MilkProcessing/milkpro2b.jpg" alt="CIP system installation" loading="lazy">
             </div>
             <div class="tv-prod__body">
-              <h3>Silos &amp; Tanks</h3>
-              <p>Vertical and horizontal milk storage tanks, silos and road tankers in insulated SS construction.</p>
+              <h3>Cleaning &amp; Automation</h3>
+              <p>CIP systems, automation, SCADA, control panels and instrumentation.</p>
               <div class="tv-prod__foot">
-                <span class="tv-prod__spec">Insulated SS</span>
-                <a href="tanks.html" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
+                <span class="tv-prod__spec">5 products</span>
+                <a href="products.html#cleaning-automation" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
               </div>
             </div>
           </article>
 
           <article class="tv-prod tv-reveal" data-d="3">
             <div class="tv-prod__media">
-              <span class="tv-prod__tag">Jacketing</span>
-              <img src="assets/img/dimpleJacket/dimple-jacket.jpg" alt="Dimple jacketed tank" loading="lazy">
+              <img src="assets/img/projects/Ref_Equi/CompressorSection.jpg" alt="Refrigeration compressor section" loading="lazy">
             </div>
             <div class="tv-prod__body">
-              <h3>Dimple Jacketed Tanks</h3>
-              <p>Laser-welded pillow plate jacketing for efficient, uniform heat transfer across the vessel wall.</p>
+              <h3>Refrigeration</h3>
+              <p>Freon and ammonia ice water systems, falling film chillers, glycol systems, cold rooms and refrigeration automation.</p>
               <div class="tv-prod__foot">
-                <span class="tv-prod__spec">Laser welded</span>
-                <a href="dimpleJacket.html" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
+                <span class="tv-prod__spec">7 products</span>
+                <a href="products.html#refrigeration" class="tv-link tv-prod__stretch">View <i class="ri-arrow-right-line"></i></a>
               </div>
             </div>
           </article>
@@ -293,7 +329,7 @@
         </div>
 
         <div class="text-center" style="margin-top:38px">
-          <a href="tubularheat.html" class="tv-btn tv-btn--ghost">See all product lines <i class="ri-arrow-right-line"></i></a>
+          <a href="products.html" class="tv-btn tv-btn--ghost">See all products <i class="ri-arrow-right-line"></i></a>
         </div>
       </div>
     </section>
