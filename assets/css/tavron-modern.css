@@ -1164,9 +1164,9 @@
 
 
 /* --------------------------------------------------------------------------
-   18. Image numbers for client review — ?numbers on the URL (tavron-modern.js
-   adds .tv-numbered) badges every photo in page order, so feedback can say
-   "swap image 7". Off for normal visitors.
+   18. Image numbers for client review — .tv-numbered on <body> badges every
+   photo in page order, so feedback can say "swap image 7". On for index.html
+   while the client reviews; drop the class from its <body> to remove them.
    -------------------------------------------------------------------------- */
 .tv-numbered { counter-reset: tv-img; }
 .tv-numbered :is(.tv-hero__slide, .tv-ind, .tv-prod__media, .tv-split__figure)::after {
