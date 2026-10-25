@@ -203,9 +203,18 @@
   }
 
   /* ------------------------------------------------------------------
+   * Image numbers for client review — ?numbers on the URL badges every
+   * photo in page order (CSS counter on .tv-numbered)
+   * ---------------------------------------------------------------- */
+  function initNumbers() {
+    if (/[?&]numbers\b/.test(location.search)) document.body.classList.add("tv-numbered");
+  }
+
+  /* ------------------------------------------------------------------
    * Boot
    * ---------------------------------------------------------------- */
   function boot() {
+    initNumbers();
     initReveal();
     initCounters();
     initHero();

@@ -1162,3 +1162,23 @@
   .tv-doc__ask { padding: 26px 22px; }
 }
 
+
+/* --------------------------------------------------------------------------
+   18. Image numbers for client review — ?numbers on the URL (tavron-modern.js
+   adds .tv-numbered) badges every photo in page order, so feedback can say
+   "swap image 7". Off for normal visitors.
+   -------------------------------------------------------------------------- */
+.tv-numbered { counter-reset: tv-img; }
+.tv-numbered :is(.tv-hero__slide, .tv-ind, .tv-prod__media, .tv-split__figure)::after {
+  counter-increment: tv-img; content: counter(tv-img);
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  min-width: 34px; height: 34px; padding: 0 8px; border-radius: 999px;
+  display: grid; place-items: center;
+  background: #00AEEF; color: #0A1A2A; border: 2px solid #fff;
+  font: 700 15px/1 var(--f-display); box-shadow: 0 4px 12px rgba(0,0,0,.25);
+}
+/* hero slides start under the fixed header */
+.tv-numbered .tv-hero__slide::after { top: 84px; left: 16px; }
+@media (max-width: 991px) {
+  .tv-numbered .tv-hero__slide::after { top: 12px; }
+}
