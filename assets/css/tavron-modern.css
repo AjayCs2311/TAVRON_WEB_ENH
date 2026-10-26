@@ -592,6 +592,9 @@
   border-radius: var(--r-md); box-shadow: var(--shadow-sm);
 }
 .tv-ind img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, center); display: block; }
+/* product shots on a white backdrop: show the whole machine instead of cropping it */
+.tv-ind--cutout { background: #fff; }
+.tv-ind--cutout img { object-fit: contain; padding: 14px 0 44px; }
 .tv-ind figcaption {
   position: absolute; inset: auto 0 0; padding: 48px 22px 18px;
   background: linear-gradient(180deg, rgba(10,26,42,0), rgba(10,26,42,.78));
